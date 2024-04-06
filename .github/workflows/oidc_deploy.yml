@@ -48,7 +48,6 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-
 - name: Fetch public instance id
   run: |
     INSTANCE_IDS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=oidc-instance" "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].InstanceId" --output text | tr '\n' ' ')
